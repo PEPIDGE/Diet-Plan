@@ -1,78 +1,87 @@
-body {
-    background-image: url('../images/bg-fixed-3.jpg');
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.auth {
-    width: 100px;
-    margin: 8em auto;
-}
-
-header,
-footer {
-    background-color: #29303c;
-    width: 100%;
-    overflow: hidden;
-    color: white;
-}
-
-.home {
-    font-size: auto;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-header {
-    position: relative;
-    padding: 10px;
-}
-
-header h1 {
-    display: inline-block;
-    background-color: #29303c;
-    color: white;
-    margin-bottom: auto;
-}
-
-header nav {
-    font-size: auto;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    position: absolute;
-    right: 0;
-    bottom: 8px;
-}
-
-header nav>* {
-    float: left;
-}
-
-footer {
-    padding: 0.5em;
-    width: 100%;
-    position: absolute;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    position: fixed;
+    top: 0;
     left: 0;
-    bottom: 0;
-}
-
-nav a {
-    margin: 0 0.5em;
-}
-
-nav a:hover {
+    right: 0;
+    z-index: 9999;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    list-style: none;
+  }
+  
+  .nav-links li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    color: #0077ff;
+  }
+  
+  .burger {
+    display: none;
     cursor: pointer;
-    color: rgb(82, 133, 139);
-    font-weight: bolder;
-}
-
-.home:hover {
-    color: rgb(82, 133, 139);
-}
-
-#user,
-#guest {
-    margin: 0;
-    padding: 0;
-}
+  }
+  
+  .burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      top: 80px;
+      left: -100%;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links li {
+      opacity: 0;
+    }
+    
+    .burger {
+      display: block;
+    }
+    
+    .nav-active {
+      left: 0;
+      opacity: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links li {
+      opacity: 1;
+    }
+    
+    .burger div {
+      background-color: #fff;
+    }
+  }
