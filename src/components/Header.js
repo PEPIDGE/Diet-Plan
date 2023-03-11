@@ -1,4 +1,4 @@
-import { Link as a } from "react-router-dom";
+
 
 export const Header = () => {
 //   const logged = (
@@ -13,17 +13,22 @@ export const Header = () => {
 //       <a to="/register">Register</a>
 //     </div>
 //   );
+
+
   return (
-    <nav>
-    <div className="logo">
-      <a href="#"><img src="./images/logo.png" alt="Your Logo"/></a>
-    </div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+    <>
+        <nav>
+            <div className="logo">
+            <a href="#"><img src="./images/logo.png" alt="Your Logo"/></a>
+            </div>
+            <ul>
+            <li><a href="#">Create</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </>
   );
 };
