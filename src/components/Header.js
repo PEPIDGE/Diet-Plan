@@ -26,7 +26,7 @@ export const Header = () => {
             <li><a href="#">Login</a></li>
             <li><a href="#">Register</a></li>
             <li><a href="#">Logout</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#">My profile</a></li>
             </ul>
         </nav>
     </>
