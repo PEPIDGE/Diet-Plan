@@ -13,7 +13,7 @@ export const Login = () => {
     return(
         <div className="form-container">
             <h1>LOGIN</h1>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} className="login-form">
             
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter your email" />
