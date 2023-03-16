@@ -1,0 +1,36 @@
+
+
+  form.create-form {
+    background-color: black;
+    border-radius: 10px;
+    position: relative;
+    
+    padding: 2%;
+    width: 40%;
+    margin: 0 auto;
+    height: 550px;
+    
+  }
+
+  .create-form-div {
+    position:fixed;
+    padding-right: 10px;
+    display: inline-block;
+  }
+
+  .btn.create-form-btn{
+    width: 20%;
+    left: 40%;
+    position: absolute;
+    bottom: 20px;
+  }
+
+  form.create-form input {
+    width: 60%;
+  }
+
+  form.create-form div {
+    display: inline-block;
+    width: 50%;
+    margin-right: -3%;
+  }
