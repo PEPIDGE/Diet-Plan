@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 export const Header = () => {
     //   const logged = (
     //     <div id="user">
-    //       <a to="/create">Create Game</a>
-    //       <a to="/logout">Logout</a>
+    //       <Link to="/create">Create Game</Link>
+    //       <Link to="/logout">Logout</Link>
     //     </div>
     //   );
     //   const guest = (
     //     <div id="guest">
-    //       <a to="/login">Login</a>
-    //       <a to="/register">Register</a>
+    //       <Link to="/login">Login</Link>
+    //       <Link to="/register">Register</Link>
     //     </div>
     //   );
 
@@ -16,25 +17,25 @@ export const Header = () => {
         <>
             <nav>
                 <div className="logo">
-                    <a href="#">
+                    <Link to="/">
                         <img src="./images/logo.png" alt="Your Logo" />
-                    </a>
+                    </Link>
                 </div>
                 <ul>
                     <li>
-                        <a href="#">Create</a>
+                        <Link to="/create">Create</Link>
                     </li>
                     <li>
-                        <a href="#">Login</a>
+                        <Link to="/login">Login</Link>
                     </li>
                     <li>
-                        <a href="#">Register</a>
+                        <Link to="/register">Register</Link>
                     </li>
                     <li>
-                        <a href="#">Logout</a>
+                        <Link to="/logout">Logout</Link>
                     </li>
                     <li>
-                        <a href="#">My profile</a>
+                        <Link to="/myProfile">My profile</Link>
                     </li>
                 </ul>
             </nav>
