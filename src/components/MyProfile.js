@@ -6,6 +6,7 @@ export const MyProfile = () => {
     <div className="profile">
       <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="Profile picture" />
       <h1>Username</h1>
+      <h3>Descripton:</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum
         quis lectus sed interdum. Nunc eget aliquam est. Integer semper
