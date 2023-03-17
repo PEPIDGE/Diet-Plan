@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router";
 import "./App.css";
 import { CreateDietDay } from "./components/CreateDietDay";
 import { Header } from "./components/Header";
@@ -10,8 +11,16 @@ function App() {
     return (
         <>
             <Header />
-            <MyProfile />
-            <HomePage />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/myProfile" element={<MyProfile />} />
+                <Route path="/create" element={<CreateDietDay />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                {/* <Route path="/logout" element={<Logout />} />
+                <Route path="/details/:gameId" element={<Details />} />
+                <Route path="/edit/:gameId" element={<EditGame />} /> */}
+            </Routes>
         </>
     );
 }
