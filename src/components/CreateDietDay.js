@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export const CreateDietDay = () => {
 
-    const [day, setDay] = useState({"Breakfast":[]});
 
     const submitHandler = (event) => {
         event.preventDefault();
