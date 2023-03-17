@@ -29,7 +29,7 @@ export const Register = () => {
             <input type="email" id="email" name="email" value={data.email} onChange={inputHandler} placeholder="Enter your email" />
 
             <label htmlFor="password">Profile picture</label>
-            <input type="url" id="profilePic" name="profilePic" value={data.profilePic} onChange={inputHandler} placeholder="Post a profile picture link" />
+            <input type="url" id="profilePic" name="profilePic" value={data.profilePic} onChange={inputHandler} placeholder="Enter a profile picture link" />
 
 
             <label htmlFor="password">Password</label>
