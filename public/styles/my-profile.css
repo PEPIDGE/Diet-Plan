@@ -40,3 +40,16 @@ h1.title {
     line-height: 1.5;
     margin-bottom: 20px;
 }
+
+.update-profile-btn {
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+    background-color: #e2e61f;
+    height: 20px;
+    border-radius: 8px;
+}
+
+.update-form {
+    min-height: 400px;
+}
