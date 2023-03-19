@@ -6,6 +6,7 @@ import { HomePage } from "./components/HomePage";
 import { Login } from "./components/Login";
 import { MyProfile } from "./components/MyProfile";
 import { Register } from "./components/Register";
+import { UpdateProfile } from "./components/UpdateProfile";
 
 function App() {
     return (
@@ -17,9 +18,10 @@ function App() {
                 <Route path="/create" element={<CreateDietDay />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
-                {/* <Route path="/logout" element={<Logout />} />
-                <Route path="/details/:gameId" element={<Details />} />
-                <Route path="/edit/:gameId" element={<EditGame />} /> */}
+                <Route path="/updateProfile/:userId" element={<UpdateProfile />} />
+                 {/* <Route path="/logout" element={<Logout />} />
+                 <Route path="/details/:gameId" element={<Details />} />
+                 <Route path="/edit/:gameId" element={<EditGame />} />  */}
             </Routes>
         </>
     );
