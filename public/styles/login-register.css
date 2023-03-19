@@ -21,7 +21,8 @@ body {
     padding: 20px 20px 0px 20px;
     width: 420px;
     margin: 0 auto;
-    height: 700px;
+    min-height: 750px;
+    height: auto;
   }
 
   form.login-form {
@@ -34,7 +35,12 @@ body {
     height: 300px;
   }
 
-  
+  .error {
+    color: red;
+    margin-top: -10%;
+    margin-bottom: 5%;
+    font-size: 11pt;
+  }
   
   h1 {
     text-align: center;
@@ -42,6 +48,9 @@ body {
     margin-bottom: 20px;
   }
   
+  .register-form span {
+    color: #e2e61f;
+  }
   
   input:not([type="submit"]) {
     display: block;
