@@ -118,7 +118,7 @@ export const Register = () => {
             {dataErrors.password.length > 0 ? <div className="error">{dataErrors.password}</div> : ""}
 
 
-            <label htmlFor="rePassword">Re-Password <span className="required">*</span></label>
+            <label htmlFor="rePassword">Confirm password <span className="required">*</span></label>
             <input type="password" id="rePassword" name="rePassword" value={data.rePassword} onChange={inputHandler} placeholder="Re-enter your password" />
 
             {dataErrors.rePassword.length > 0 ? <div className="error">{dataErrors.rePassword}</div> : ""}
