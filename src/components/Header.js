@@ -18,7 +18,7 @@ export const Header = () => {
             <nav>
                 <div className="logo">
                     <Link to="/">
-                        <img src="http://localhost:3000/updateProfile/images/logo.png" alt="Your Logo" />
+                        <img src="http://localhost:3000/images/logo.png" alt="Your Logo" />
                     </Link>
                 </div>
                 <ul>
