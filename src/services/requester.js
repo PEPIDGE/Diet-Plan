@@ -21,7 +21,8 @@ export const requester = async(method, url, data) => {
             });
         } 
         const res = await request;
-        return res;
+        const dataFROMRES = await res.json();
+        return dataFROMRES;
     } catch (error) {
         console.log(error);
         return error;
