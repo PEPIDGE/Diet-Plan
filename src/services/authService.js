@@ -9,10 +9,14 @@ export const onLogin = (email, password) => {
     
 }  
 
-export const onRegister = (email, password, username, profilePic, description) => {
+export const onRegister = (email, password) => {
     const userRegister = requester("POST", `${baseUrl}/users/register`, {email, password});
-    const publicDataRegister = requester("POST", `${baseUrl}/publicUsers`, {username, profilePic, description});
-    return [userRegister, publicDataRegister];
+    return userRegister;
+}
+
+export const onPublicRegister = (username, profilePic, description) => {
+    const publicDataRegister = requester("POST", `${baseUrl}/data/publicUsers`, {username, profilePic, description});
+    return publicDataRegister;
 }
 
 export const onLogout = () => {
