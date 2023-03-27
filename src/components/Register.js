@@ -79,19 +79,19 @@ export const Register = () => {
         }
         if (data.username.trim().length === 0 ) {
             isValid = false;
-            errors.username = "The field is required" ;
+            errors.username = "This field is required" ;
         }
         if (data.email.trim().length === 0 ) {
             isValid = false;
-            errors.email = "The field is required" ;
+            errors.email = "This field is required" ;
         }
         if (data.password.trim().length === 0 ) {
             isValid = false;
-            errors.password = "The field is required" ;
+            errors.password = "This field is required" ;
         }
         if (data.rePassword.trim().length === 0 ) {
             isValid = false;
-            errors.rePassword = "The field is required" ;
+            errors.rePassword = "This field is required" ;
         }
         setDataErrors(errors)
         return isValid;
@@ -129,7 +129,7 @@ export const Register = () => {
             {dataErrors.profilePic.length > 0 ? <div className="error">{dataErrors.profilePic}</div> : ""}
 
             <label htmlFor="description">Write how you want to be described to others <span className="optional">(optional)</span></label>
-            <textarea maxLength={350} type="text" id="description" name="description" value={data.description} onChange={inputHandler} placeholder="Enter description about you" />
+            <textarea maxLength={350} type="text" id="description" name="description" value={data.description} onChange={inputHandler} placeholder="Enter a description about you" />
             
             {dataErrors.description.length > 0 ? <div className="error">{dataErrors.description}</div> : ""}
 

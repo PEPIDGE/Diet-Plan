@@ -26,11 +26,11 @@ export const Login = () => {
         
         if (email.trim().length === 0 ) {
             isValid = false;
-            errors.email = "The field is required" ;
+            errors.email = "This field is required" ;
         }
         if (password.trim().length === 0 ) {
             isValid = false;
-            errors.password = "The field is required" ;
+            errors.password = "This field is required" ;
         }
         setDataErrors(errors)
         return isValid;
