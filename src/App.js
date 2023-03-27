@@ -7,15 +7,26 @@ import { Login } from "./components/Login";
 import { MyProfile } from "./components/MyProfile";
 import { Register } from "./components/Register";
 import { UpdateProfile } from "./components/UpdateProfile";
-import { AuthContext } from "./contexts/authContext";
+import { AuthContext } from "./contexts/AuthContext";
 import { useLocalStorage } from "./hooks/useLocalStorageHook";
 
 
 function App() {
     const [auth, setAuth] = useLocalStorage('authData', {});
 
+    const userLogin = (authData) => {
+        setAuth(authData);
+    };
+    const publicUserLogin = (authData) => {
+        const newAuthData = {...auth, publicUserId : authData}
+        setAuth(newAuthData);
+    };
+
+    const userLogout = () => {
+        setAuth({});
+    };
     return (
-        <AuthContext.Provider value={auth}>
+        <AuthContext.Provider value={{auth, userLogin, userLogout, publicUserLogin}}>
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
