@@ -9,13 +9,13 @@ export const Logout = () => {
     const { user, userLogout } = useContext(AuthContext);
 
     useEffect(() => {
-        onLogout(user.accessToken)
+        onLogout()
             .then(() => {
                 userLogout();
-                navigate('/');
+                navigate("/");
             })
             .catch(() => {
-                navigate('/');
+                navigate("/");
             });
     });
 
