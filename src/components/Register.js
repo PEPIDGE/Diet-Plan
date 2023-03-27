@@ -1,6 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router";
+import { AuthContext } from "../contexts/AuthContext";
+import { onPublicRegister, onRegister } from "../services/authService";
 
 export const Register = () => {
+
+    const navigate = useNavigate();
+    const {userLogin, publicUserLogin} = useContext(AuthContext);
 
     const [data, setData] = useState({
         "username": "",
@@ -10,6 +16,7 @@ export const Register = () => {
         "password": "",
         "rePassword": ""
     });
+    
     const [dataErrors, setDataErrors] = useState({
         "username": "",
         "email": "",
@@ -24,7 +31,7 @@ export const Register = () => {
         let errors = {...dataErrors}
         if (data.description.length >=300 && data.description.length < 350) {
             symbolsRemaing = 350 - data.description.length;
-            errors.description =`You have ${symbolsRemaing} symbols remaingn`;
+            errors.description =`You have ${symbolsRemaing} symbols remaining`;
         } else if (data.description.length <300) {
             errors.description ="";
         } else if (data.description.length === 350) {
@@ -38,9 +45,31 @@ export const Register = () => {
         setData({ ...data, [name]: value });
     }
 
-    function submitHandler (e) {
+    async function submitHandler (e) {
         e.preventDefault();
         const isValid = formValidation();
+        let user ={};
+        if (isValid) {
+            user = await onRegister(data.email.trim(), data.password);
+            if (user.message) {
+                alert(user.message);
+            } else {
+                userLogin({"_id": user._id, "accessToken": user.accessToken});
+                let profilePic;
+                if(data.profilePic === ""){
+                    profilePic = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg";
+                } else {
+                    profilePic = data.profilePic;
+                }
+                const publicData = await onPublicRegister(data.username.trim(), profilePic.trim(), data.description);
+                console.log(publicData);
+                publicUserLogin(publicData._id);
+                navigate("/");
+            }
+            
+        }
+        
+        console.log(user);
     }
 
     function formValidation () {
