@@ -1,17 +1,32 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 export const Header = () => {
-    //   const logged = (
-    //     <div id="user">
-    //       <Link to="/create">Create Game</Link>
-    //       <Link to="/logout">Logout</Link>
-    //     </div>
-    //   );
-    //   const guest = (
-    //     <div id="guest">
-    //       <Link to="/login">Login</Link>
-    //       <Link to="/register">Register</Link>
-    //     </div>
-    //   );
+
+      const {publicUserId} = useContext(AuthContext);
+      const logged = (
+        <>
+            <li>
+                <Link to="/create">Create</Link>
+            </li>
+            <li>
+                <Link to="/logout">Logout</Link>
+            </li>
+            <li>
+                <Link to="/myProfile">My profile</Link>
+            </li>
+        </>
+      );
+      const guest = (
+        <>
+           <li>
+                <Link to="/login">Login</Link>
+            </li>
+            <li>
+                <Link to="/register">Register</Link>
+            </li>
+        </>
+      );
 
     return (
         <>
@@ -22,21 +37,7 @@ export const Header = () => {
                     </Link>
                 </div>
                 <ul>
-                    <li>
-                        <Link to="/create">Create</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
-                    <li>
-                        <Link to="/register">Register</Link>
-                    </li>
-                    <li>
-                        <Link to="/logout">Logout</Link>
-                    </li>
-                    <li>
-                        <Link to="/myProfile">My profile</Link>
-                    </li>
+                    {publicUserId ? logged : guest}
                 </ul>
             </nav>
         </>
