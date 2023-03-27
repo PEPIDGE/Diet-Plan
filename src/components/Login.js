@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router";
+import { AuthContext } from "../contexts/AuthContext";
+import { onLogin, onPublicLogin } from "../services/authService";
 
 export const Login = () => {
+
+    const navigate = useNavigate();
+    const {userLogin, publicUserLogin} = useContext(AuthContext);
+
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
         const isValid = formValidation();
-        console.log(`Email: ${email}\nPassword: ${password}`);
+        let user = {};
+        if (isValid) {
+            user = await onLogin(email.trim(), password);
+            if (user.message) {
+                alert(user.message);
+            } else {
+                userLogin({"_id": user._id, "accessToken": user.accessToken});
+                
+                const publicDataList = await onPublicLogin(user._id);
+                const publicData = publicDataList[0];
+                publicUserLogin(publicData._id);
+                navigate("/");
+            }
+            
+        }
     }
 
     const [dataErrors, setDataErrors] = useState({
