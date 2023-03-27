@@ -7,10 +7,15 @@ import { Login } from "./components/Login";
 import { MyProfile } from "./components/MyProfile";
 import { Register } from "./components/Register";
 import { UpdateProfile } from "./components/UpdateProfile";
+import { AuthContext } from "./contexts/authContext";
+import { useLocalStorage } from "./hooks/useLocalStorageHook";
+
 
 function App() {
+    const [auth, setAuth] = useLocalStorage('authData', {});
+
     return (
-        <>
+        <AuthContext.Provider value={auth}>
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -23,7 +28,7 @@ function App() {
                  <Route path="/details/:gameId" element={<Details />} />
                  <Route path="/edit/:gameId" element={<EditGame />} />  */}
             </Routes>
-        </>
+        </AuthContext.Provider>
     );
 }
 
