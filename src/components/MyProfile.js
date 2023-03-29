@@ -21,7 +21,7 @@ export const MyProfile = () => {
           <div className="container">
             <div className="profile">
               <img src={user.profilePic ? user.profilePic : "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg"} alt="Profile picture" />
-              <Link to={`/updateProfile}`} className="btn update-profile-btn">Update profile</Link>
+              <Link to={`/updateProfile/${publicUserId}`} className="btn update-profile-btn">Update profile</Link>
               
               <h1>{user.username}</h1>
               <h3>Descripton:</h3>

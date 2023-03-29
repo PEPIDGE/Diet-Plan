@@ -4,8 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 export const Header = () => {
 
 
-    const {auth} = useContext(AuthContext);
-    const publicUserId = auth.publicUserId;
+    const publicUserId = useContext(AuthContext).auth.publicUserId;
 
       const logged = (
         <>
