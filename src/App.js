@@ -19,8 +19,7 @@ function App() {
         setAuth(authData);
     };
     const publicUserLogin = (authData) => {
-        const newAuthData = {...auth, publicUserId : authData}
-        setAuth(newAuthData);
+        setAuth(authData);
     };
 
     const userLogout = () => {

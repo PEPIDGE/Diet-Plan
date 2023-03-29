@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
-import { onLogin, onPublicLogin } from "../services/authService";
+import { onLogin, getPublicUser } from "../services/authService";
 
 export const Login = () => {
 
@@ -23,9 +23,9 @@ export const Login = () => {
             } else {
                 userLogin({"_id": user._id, "accessToken": user.accessToken});
                 
-                const publicDataList = await onPublicLogin(user._id);
+                const publicDataList = await getPublicUser(user._id);
                 const publicData = publicDataList[0];
-                publicUserLogin(publicData._id);
+                publicUserLogin({"_id": user._id, "accessToken": user.accessToken, "publicUserId": publicData._id});
                 navigate("/");
             }
             
