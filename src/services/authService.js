@@ -24,6 +24,12 @@ export const getPublicUser = (userId) => {
     return publicUserData;
 }
 
+
+export const updatePublicUser = (userId, username, profilePic, description) => {
+    const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description});
+    return publicUserData;
+}
+
 export const onLogout = () => {
     try {
         return fetch(`${baseUrl}/users/logout`, {
