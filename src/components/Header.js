@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 export const Header = () => {
 
-      const {publicUserId} = useContext(AuthContext);
+
+    const {auth} = useContext(AuthContext);
+    const publicUserId = auth.publicUserId;
+
       const logged = (
         <>
             <li>
