@@ -1,26 +1,32 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getPublicUser } from "../services/authService";
 
 export const MyProfile = () => {
 
   const userId = JSON.parse(localStorage.getItem("authData"))._id;
-  
+  const publicUserId = JSON.parse(localStorage.getItem("authData")).publicUserId;
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const publicUser = (async () => {
+      const data = await getPublicUser(userId);
+      setUser(data[0])
+    })();
+
+  }, []);
 
     return (
         <>
           <h1 className="title">My Profile</h1>
           <div className="container">
             <div className="profile">
-              <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="Profile picture" />
-              <Link to={`/updateProfile/${userId}`} className="btn update-profile-btn">Update profile</Link>
+              <img src={user.profilePic ? user.profilePic : "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg"} alt="Profile picture" />
+              <Link to={`/updateProfile}`} className="btn update-profile-btn">Update profile</Link>
               
-              <h1>Username</h1>
+              <h1>{user.username}</h1>
               <h3>Descripton:</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum
-                quis lectus sed interdum. Nunc eget aliquam est. Integer semper
-                tincidunt massa, sed efficitur nisi rhoncus at. Donec tincidunt, sem vel
-                consequat lobortis, elit elit consectetur purus, in imperdiet lacus
-                risus at ex.
+               {user.description}
               </p>
             </div>
           </div>
