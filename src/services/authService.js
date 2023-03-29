@@ -19,9 +19,9 @@ export const onPublicRegister = (username, profilePic, description) => {
     return publicDataRegister;
 }
 
-export const onPublicLogin = (userId) => {
-    const publicDataLogin = requester("GET", `${baseUrl}/data/publicUsers?where=_ownerId%3D%22${userId}%22`);
-    return publicDataLogin;
+export const getPublicUser = (userId) => {
+    const publicUserData = requester("GET", `${baseUrl}/data/publicUsers?where=_ownerId%3D%22${userId}%22`);
+    return publicUserData;
 }
 
 export const onLogout = () => {
