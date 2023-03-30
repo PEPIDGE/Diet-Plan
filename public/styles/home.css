@@ -7,10 +7,11 @@
     padding: 20px;
     padding-left: 95px;
     padding-right: 95px;
-    height: auto;
+    position: relative;
     width: 37%;
+    height: auto;
     justify-content: center;
-    margin: 50px 525px 100px;
+    margin: 0 auto;
     font-size: auto;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -41,4 +42,12 @@ img.profileImg {
     background-color: whitesmoke;
     color: black;
     text-decoration: solid;
+}
+
+.no-articles{
+    margin-top: 20%;
+}
+
+.home-title {
+    margin-top: 2%;
 }

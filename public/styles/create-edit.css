@@ -1,35 +1,31 @@
 
 
   form.create-form {
+   
     background-color: black;
     border-radius: 10px;
     position: relative;
-    padding: 2%;
-    width: 40%;
+    padding: 20px 20px 0px 20px;
+    width: 420px;
     margin: 0 auto;
-    height: 500px;
-    
-  }
-
-  .create-form-div {
-    position:fixed;
-    padding-right: 10px;
-    display: inline-block;
+    min-height: 830px;
+    height: auto;
   }
 
   .btn.create-form-btn{
     width: 20%;
     left: 40%;
     position: absolute;
-    bottom: 20px;
+    margin-bottom: -10%;
+    bottom: 11%;
   }
 
   form.create-form input {
-    width: 60%;
+    margin-bottom: 9%;
   }
 
-  form.create-form div {
-    display: inline-block;
-    width: 50%;
-    margin-right: -3%;
+  .error {
+    margin-top: -8%;
+    margin-bottom: 4%;
+
   }
