@@ -55,10 +55,15 @@ export const Register = () => {
                 alert(user.message);
             } else {
                 userLogin({ _id: user._id, accessToken: user.accessToken });
-
+                let profilePic = "";
+                if (data.profilePic.trim() === "") {
+                    profilePic = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg";
+                } else {
+                    profilePic = data.profilePic.trim();
+                }
                 const publicData = await onPublicRegister(
                     data.username.trim(),
-                    data.profilePic.trim(),
+                    profilePic,
                     data.description
                 );
                 publicUserLogin({
@@ -91,14 +96,11 @@ export const Register = () => {
             isValid = false;
             errors.username = "The length of the username must be between 2 and 8 symbols";
         }
-        if (
-            data.profilePic.length > 0 &&
-            data.profilePic.trim().slice(-4) !== ".jpg" &&
-            data.profilePic.trim().slice(-4) !== ".png" &&
-            data.profilePic.slice(25) === "https://www.facebook.com/"
-        ) {
+        if (data.profilePic.length > 0 &&
+            data.profilePic.trim().slice(0, 4) !== "http"
+        ){
             isValid = false;
-            errors.profilePic = "The type of photo format must be .png or .jpg";
+            errors.profilePic = "The protocol must be http or https";
         }
         if (
             data.password.trim().length < 10 ||
@@ -117,9 +119,9 @@ export const Register = () => {
         ) {
             isValid = false;
             errors.description = "The length of the description must be at least 15 symbols";
-        } else if (data.description.trim().length > 300) {
+        } else if (data.description.trim().length > 350) {
             isValid = false;
-            errors.description = "The length of the description must be maximum 300 symbols";
+            errors.description = "The length of the description must be maximum 350 symbols";
         }
         if (data.username.trim().length === 0) {
             isValid = false;
