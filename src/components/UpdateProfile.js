@@ -10,7 +10,7 @@ export const UpdateProfile = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const publicUser = (async () => {
+        (async () => {
             const data = await getPublicUser(userId);
             setUser(data[0]);
         })();
@@ -37,6 +37,7 @@ export const UpdateProfile = () => {
                 console.log(updatedUser);
             } else if (updatedUser.message) {
                 alert(updatedUser.message);
+                //todo: 401 page
             } else {
                 navigate(`/myProfile`);
             }
@@ -57,13 +58,11 @@ export const UpdateProfile = () => {
             isValid = false;
             errors.username = "The length of the username must be between 2 and 8 symbols";
         }
-        if (
-            data.profilePic.trim().slice(-4) !== ".jpg" &&
-            data.profilePic.trim().slice(-4) !== ".png" &&
-            data.profilePic.slice(25) === "https://www.facebook.com/"
-        ) {
+        if (data.profilePic.length > 0 &&
+            data.profilePic.trim().slice(0, 4) !== "http"
+        ){
             isValid = false;
-            errors.profilePic = "The type of photo format must be .png or .jpg";
+            errors.profilePic = "The protocol must be http or https";
         }
         if (data.description.trim().length < 15) {
             isValid = false;
