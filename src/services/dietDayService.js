@@ -21,3 +21,8 @@ export const deleteDietDay = (id) => {
 export const editDietDay = (id, data) => {
     return requester("PUT", `${baseUrl}/data/dietDays/${id}`, data);
 };
+
+export const getLastDietDay = async(userId) => {
+    const lastDietDays = await requester("GET", `${baseUrl}/data/dietDays?where=_ownerId%3D%22${userId}%22?sortBy=_createdOn%20desc`);
+    return lastDietDays.message ? [] : lastDietDays.length === 0 ? [] : lastDietDays[lastDietDays.length - 1];
+}
