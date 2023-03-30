@@ -1,19 +1,30 @@
+import { useEffect, useState } from "react";
+import { getAll } from "../services/dietDayService";
 import { DietDay } from "./DietDay";
 
 export const HomePage = () => {
-    return(
-        <div className="home">
-            <h1>People's diet days</h1>
+    const [dietDays, setDietDays] = useState({});
 
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
-            <DietDay/>
+    useEffect(() => {
+        (async () => {
+          const data = await getAll();
+          console.log(data);
+          setDietDays(data)
+        })();
+    
+      }, []);
+    return(
+        <>
+        <h1 className="home-title">People's diet days</h1>
+        <div className="home">
+          	<div className="content">
+              
+            {dietDays.length > 0
+                    ? dietDays.map(x => <DietDay key={x._id} day={x} />)
+                    : <h1 className="no-articles">No diet days yet</h1>
+                }
+            </div>
         </div>
+        </>
     );
 }
