@@ -10,6 +10,7 @@ import { Register } from "./components/Register";
 import { UpdateProfile } from "./components/UpdateProfile";
 import { AuthContext } from "./contexts/AuthContext";
 import { useLocalStorage } from "./hooks/useLocalStorageHook";
+import { MyPosts } from "./components/MyPosts";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/myProfile" element={<MyProfile />} />
+                <Route path="/myPosts" element={<MyPosts />} />
                 <Route path="/create" element={<CreateDietDay />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
