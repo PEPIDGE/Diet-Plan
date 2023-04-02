@@ -17,6 +17,9 @@ export const Header = () => {
             <li>
                 <Link to="/myProfile">My profile</Link>
             </li>
+            <li>
+                <Link to="/myPosts">My posts</Link>
+            </li>
         </>
       );
       const guest = (
