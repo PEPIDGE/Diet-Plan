@@ -12,7 +12,7 @@ export const UpdateProfile = () => {
     useEffect(() => {
         (async () => {
             const data = await getPublicUser(userId);
-            setUser(data[0]);
+            setUser(data);
         })();
     }, []);
 

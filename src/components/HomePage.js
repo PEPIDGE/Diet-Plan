@@ -8,7 +8,6 @@ export const HomePage = () => {
     useEffect(() => {
         (async () => {
           const data = await getAll();
-          console.log(data);
           setDietDays(data)
         })();
     

@@ -11,7 +11,7 @@ export const MyProfile = () => {
   useEffect(() => {
     (async () => {
       const data = await getPublicUser(userId);
-      setUser(data[0])
+      setUser(data)
     })();
 
   }, []);
@@ -21,10 +21,10 @@ export const MyProfile = () => {
           <h1 className="title">My Profile</h1>
           <div className="container">
             <div className="profile">
+              <h1 className="username">{user.username}</h1>
               <img src={user.profilePic} alt="Profile picture" />
               <Link to={`/updateProfile/${publicUserId}`} className="btn update-profile-btn">Update profile</Link>
               
-              <h1>{user.username}</h1>
               <h3>Descripton:</h3>
               <p>
                {user.description}

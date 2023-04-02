@@ -8,7 +8,7 @@ export const DietDay = (props) => {
   useEffect(() => {
     (async () => {
       const data = await getPublicUser(props.day._ownerId);
-      setUser(data[0])
+      setUser(data)
     })();
 
   }, []);

@@ -19,9 +19,10 @@ export const onPublicRegister = (username, profilePic, description) => {
     return publicDataRegister;
 }
 
-export const getPublicUser = (userId) => {
-    const publicUserData = requester("GET", `${baseUrl}/data/publicUsers?where=_ownerId%3D%22${userId}%22`);
-    return publicUserData;
+export const getPublicUser = async (userId) => {
+    const publicUserData = await requester("GET", `${baseUrl}/data/publicUsers?where=_ownerId%3D%22${userId}%22`);
+    console.log(publicUserData);
+    return publicUserData.length > 0 ? publicUserData[0] : {};
 }
 
 

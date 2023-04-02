@@ -23,8 +23,7 @@ export const Login = () => {
             } else {
                 userLogin({"_id": user._id, "accessToken": user.accessToken});
                 
-                const publicDataList = await getPublicUser(user._id);
-                const publicData = publicDataList[0];
+                const publicData = await getPublicUser(user._id);
                 publicUserLogin({"_id": user._id, "accessToken": user.accessToken, "publicUserId": publicData._id});
                 navigate("/");
             }
@@ -71,6 +70,7 @@ export const Login = () => {
             {dataErrors.password.length > 0 ? <div className="error">{dataErrors.password}</div> : ""}
 
             <input className="btn submit-form-btn" type="submit" value="Submit"/>
+
             </form>
         </div>
     );
