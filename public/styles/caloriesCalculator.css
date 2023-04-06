@@ -1,0 +1,73 @@
+select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: black;
+  background-color: white;
+  background-image: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.select {
+  color: white;
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+
+.select:hover::after {
+  color: #e2e61f;
+}
+
+body {
+  color: black;
+}
+h1 {
+  margin: 0 0 0.25em;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+}
+
+.gender {
+  margin-right: 0px;
+}
+
+.custom-control-input {
+  margin-right: -20%;
+}
+
+.calorie-form {
+  height: 600px;
+}
+
+.calorie-btn {
+  position: absolute;
+  left: 40%;
+}

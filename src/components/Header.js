@@ -20,6 +20,10 @@ export const Header = () => {
             <li>
                 <Link to="/myPosts">My posts</Link>
             </li>
+            <li>
+                <Link to="/calorieCalculator">Calculator</Link>
+            </li>
+            
         </>
       );
       const guest = (
