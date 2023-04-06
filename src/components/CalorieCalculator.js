@@ -117,31 +117,31 @@ export const CalorieCalculator = () => {
           <input
             type="radio" id="male" name="customRadioInline1" className="custom-control-input" defaultChecked="checked"
           />
-          <label className="custom-control-label" htmlFor="male">
+          <label htmlFor="male">
             Male
           </label>
 
           <input type="radio" id="female" name="customRadioInline1" className="custom-control-input"  />
-          <label className="custom-control-label" htmlFor="female">
+          <label htmlFor="female">
             Female
           </label>
         </div>
-        <label htmlFor="age" className="col-sm-2 col-form-label">
+        <label htmlFor="age" >
           Age
         </label>
-        <input type="number" className="form-control" id="age" placeholder="Ages 15-80" />
+        <input type="number"  id="age" placeholder="Ages 15-80" />
 
 
-        <label htmlFor="weight" className="col-sm-2 col-form-label">
+        <label htmlFor="weight" >
           Weight
         </label>
-        <input  type="number" className="form-control" id="weight" placeholder="In kilograms" />
-        <label htmlFor="height" className="col-sm-2 col-form-label">
+        <input  type="number"  id="weight" placeholder="In kilograms" />
+        <label htmlFor="height" >
           Height
         </label>
         <input type="number" className="form-control" id="height" placeholder="In centimeters" />
 
-          <label className="col-form-label col-sm-2 pt-0">Activity</label>
+          <label className="activity-label">Activity</label>
          <div className="select">
           <select id="list">
             <option value={1}>

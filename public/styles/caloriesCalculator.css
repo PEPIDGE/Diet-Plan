@@ -17,6 +17,7 @@ select::-ms-expand {
 }
 
 .select {
+  margin-top: 4px;
   color: white;
   position: relative;
   display: flex;
