@@ -1,127 +1,163 @@
+import {useContext, useState} from "react";
+import { useNavigate } from "react-router";
+import { AuthContext } from "../contexts/AuthContext";
+import {getPublicUser, putCaloriesInUserProfile, updatePublicUser} from "../services/authService";
+
 export const CalorieCalculator = () => {
-  function calculateCalories(e) {
-    const age = document.getElementById("age");
-    const gender = document.querySelector(
-      'input[name="customRadioInline1"]:checked'
-    );
-    const weight = document.getElementById("weight");
-    const height = document.getElementById("height");
-    const activity = document.getElementById("list").value;
-    const totalCalories = document.getElementById("total-calories");
 
-    if (
-      age.value === "" ||
-      weight.value === "" ||
-      height.value === "" ||
-      80 < age.value ||
-      age.value < 15
-    ) {
-      errorMessage("Please make sure the values you entered are correct");
-    } else if (gender.id === "male" && activity === "1") {
-      totalCalories.value =
-        1.2 *
-        (66.5 +
-          13.75 * parseFloat(weight.value) +
-          5.003 * parseFloat(height.value) -
-          6.755 * parseFloat(age.value));
-    } else if (gender.id === "male" && activity === "2") {
-      totalCalories.value =
-        1.375 *
-        (66.5 +
-          13.75 * parseFloat(weight.value) +
-          5.003 * parseFloat(height.value) -
-          6.755 * parseFloat(age.value));
-    } else if (gender.id === "male" && activity === "3") {
-      totalCalories.value =
-        1.55 *
-        (66.5 +
-          13.75 * parseFloat(weight.value) +
-          5.003 * parseFloat(height.value) -
-          6.755 * parseFloat(age.value));
-    } else if (gender.id === "male" && activity === "4") {
-      totalCalories.value =
-        1.725 *
-        (66.5 +
-          13.75 * parseFloat(weight.value) +
-          5.003 * parseFloat(height.value) -
-          6.755 * parseFloat(age.value));
-    } else if (gender.id === "male" && activity === "5") {
-      totalCalories.value =
-        1.9 *
-        (66.5 +
-          13.75 * parseFloat(weight.value) +
-          5.003 * parseFloat(height.value) -
-          6.755 * parseFloat(age.value));
-    } else if (gender.id === "female" && activity === "1") {
-      totalCalories.value =
-        1.2 *
-        (655 +
-          9.563 * parseFloat(weight.value) +
-          1.85 * parseFloat(height.value) -
-          4.676 * parseFloat(age.value));
-    } else if (gender.id === "female" && activity === "2") {
-      totalCalories.value =
-        1.375 *
-        (655 +
-          9.563 * parseFloat(weight.value) +
-          1.85 * parseFloat(height.value) -
-          4.676 * parseFloat(age.value));
-    } else if (gender.id === "female" && activity === "3") {
-      totalCalories.value =
-        1.55 *
-        (655 +
-          9.563 * parseFloat(weight.value) +
-          1.85 * parseFloat(height.value) -
-          4.676 * parseFloat(age.value));
-    } else if (gender.id === "female" && activity === "4") {
-      totalCalories.value =
-        1.725 *
-        (655 +
-          9.563 * parseFloat(weight.value) +
-          1.85 * parseFloat(height.value) -
-          4.676 * parseFloat(age.value));
-    } else {
-      totalCalories.value =
-        1.9 *
-        (655 +
-          9.563 * parseFloat(weight.value) +
-          1.85 * parseFloat(height) -
-          4.676 * parseFloat(age.value));
+  const navigate = useNavigate();
+  const {auth} = useContext(AuthContext);
+  const [data, setData] = useState({
+    "gender": "male",
+    "age":"",
+    "weight":"",
+    "height":"",
+    "activity": "1",  
+  });
+
+  const [dataErrors, setDataErrors] = useState({
+    username: "",
+    profilePic: "",
+    description: "",
+  });
+
+
+  const inputHandler = (event) => {
+    setData({...data, [event.target.name] : event.target.value});
+  }
+
+  async function calculateCalories(e) {
+    e.preventDefault();
+    let totalCalories = 1.1;
+    const isValid = formValidation(data);
+    if(!isValid){
+      return;
     }
+    else if (data.gender === "male" && data.activity === "1") {
+      totalCalories =
+        1.2 *
+        (66.5 +
+          13.75 * parseFloat(data.weight) +
+          5.003 * parseFloat(data.height) -
+          6.755 * parseFloat(data.age));
+    } else if (data.gender === "male" && data.activity === "2") {
+      totalCalories =
+        1.375 *
+        (66.5 +
+          13.75 * parseFloat(data.weight) +
+          5.003 * parseFloat(data.height) -
+          6.755 * parseFloat(data.age));
+    } else if (data.gender === "male" && data.activity === "3") {
+      totalCalories =
+        1.55 *
+        (66.5 +
+          13.75 * parseFloat(data.weight) +
+          5.003 * parseFloat(data.height) -
+          6.755 * parseFloat(data.age));
+    } else if (data.gender === "male" && data.activity === "4") {
+      totalCalories =
+        1.725 *
+        (66.5 +
+          13.75 * parseFloat(data.weight) +
+          5.003 * parseFloat(data.height) -
+          6.755 * parseFloat(data.age));
+    } else if (data.gender === "male" && data.activity === "5") {
+      totalCalories =
+        1.9 *
+        (66.5 +
+          13.75 * parseFloat(data.weight) +
+          5.003 * parseFloat(data.height) -
+          6.755 * parseFloat(data.age));
+    } else if (data.gender === "female" && data.activity === "1") {
+      totalCalories =
+        1.2 *
+        (655 +
+          9.563 * parseFloat(data.weight) +
+          1.85 * parseFloat(data.height) -
+          4.676 * parseFloat(data.age));
+    } else if (data.gender === "female" && data.activity === "2") {
+      totalCalories =
+        1.375 *
+        (655 +
+          9.563 * parseFloat(data.weight) +
+          1.85 * parseFloat(data.height) -
+          4.676 * parseFloat(data.age));
+    } else if (data.gender === "female" && data.activity === "3") {
+      totalCalories =
+        1.55 *
+        (655 +
+          9.563 * parseFloat(data.weight) +
+          1.85 * parseFloat(data.height) -
+          4.676 * parseFloat(data.age));
+    } else if (data.gender === "female" && data.activity === "4") {
+      totalCalories =
+        1.725 *
+        (655 +
+          9.563 * parseFloat(data.weight) +
+          1.85 * parseFloat(data.height) -
+          4.676 * parseFloat(data.age));
+    } else if (data.gender === "female" && data.activity === "5"){
+      totalCalories =
+        1.9 *
+        (655 +
+          9.563 * parseFloat(data.weight) +
+          1.85 * parseFloat(data.height) -
+          4.676 * parseFloat(data.age));
+    }
+    const user = await getPublicUser(auth._id);
+    if(user === {}){
+      return;
+    } 
+    await putCaloriesInUserProfile(auth.publicUserId, user.username, user.profilePic, user.description,totalCalories.toFixed(2));
+    navigate("/");
 
-    document.getElementById("results").style.display = "block";
-
-    document.getElementById("loading").style.display = "none";
   }
 
-  function errorMessage(error) {
-    document.getElementById("results").style.display = "none";
-
-    document.getElementById("loading").style.display = "none";
-    const errorDiv = document.createElement("div");
-    const card = document.querySelector(".card");
-    const heading = document.querySelector(".heading");
-    errorDiv.className = "alert alert-danger";
-    errorDiv.appendChild(document.createTextNode(error));
-
-    card.insertBefore(errorDiv, heading);
-  }
+  function formValidation(data) {
+    let errors = {
+        age: "",
+        height: "",
+        weight: "",
+    };
+    let isValid = true;
+    if (
+        Number(data.age) < 15 || Number(data.age) > 80
+    ) {
+        isValid = false;
+        errors.age = "The age must be between 15 and 80 years old";
+    } else  if (
+        Number(data.weight) < 40 || Number(data.weight) > 250
+    ) {
+        isValid = false;
+        errors.weight = "The weight must be between 40 and 250 kilograms";
+    } else if (
+        Number(data.height) < 56 || Number(data.height) > 251
+    ) {
+        isValid = false;
+        errors.height = "The height must be between 56 and 251 cm";
+    } 
+      
+      setDataErrors(errors);
+      return isValid;
+    }
+    
+    
 
   return (
     <>
       <h1 className="home-title">Calorie Calculator</h1>
-      <form className="calorie-form">
-        <div className="group">
+      <form className="calorie-form" onSubmit={calculateCalories}>
+        <div className="group" onChange={inputHandler}>
           <label className="gender">Gender</label>
 
           <input
-            type="radio" id="male" name="customRadioInline1" className="custom-control-input" defaultChecked="checked"
+            type="radio" id="male" name="gender" value="male" className="custom-control-input" defaultChecked
           />
           <label htmlFor="male">
             Male
           </label>
 
-          <input type="radio" id="female" name="customRadioInline1" className="custom-control-input"  />
+          <input type="radio" id="female" value="female" name="gender" className="custom-control-input" />
           <label htmlFor="female">
             Female
           </label>
@@ -129,21 +165,21 @@ export const CalorieCalculator = () => {
         <label htmlFor="age" >
           Age
         </label>
-        <input type="number"  id="age" placeholder="Ages 15-80" />
+        <input type="number" name="age"  id="age" placeholder="Ages 15-80" value={data.age} onChange={inputHandler}/>
 
 
         <label htmlFor="weight" >
           Weight
         </label>
-        <input  type="number"  id="weight" placeholder="In kilograms" />
+        <input  type="number" name="weight"  id="weight" placeholder="In kilograms" value={data.weight} onChange={inputHandler}/>
         <label htmlFor="height" >
           Height
         </label>
-        <input type="number" className="form-control" id="height" placeholder="In centimeters" />
+        <input type="number" name="height" className="form-control" id="height" placeholder="In centimeters" value={data.height} onChange={inputHandler} />
 
           <label className="activity-label">Activity</label>
          <div className="select">
-          <select id="list">
+          <select id="list" name="activity" onChange={inputHandler}>
             <option value={1}>
               Sedentary (little or no exercise)
             </option>
