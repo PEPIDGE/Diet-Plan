@@ -15,7 +15,7 @@ export const onRegister = (email, password) => {
 }
 
 export const onPublicRegister = (username, profilePic, description) => {
-    const publicDataRegister = requester("POST", `${baseUrl}/data/publicUsers`, {username, profilePic, description});
+    const publicDataRegister = requester("POST", `${baseUrl}/data/publicUsers`, {username, profilePic, description, "calories": 0});
     return publicDataRegister;
 }
 
@@ -30,6 +30,12 @@ export const updatePublicUser = (userId, username, profilePic, description) => {
     const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description});
     return publicUserData;
 }
+
+export const putCaloriesInUserProfile = (userId, username, profilePic, description, calories) => {
+    const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description, calories});
+    return publicUserData;
+}
+
 
 export const onLogout = () => {
     try {
