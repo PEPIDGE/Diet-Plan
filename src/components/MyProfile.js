@@ -15,7 +15,7 @@ export const MyProfile = () => {
     })();
 
   }, []);
-
+  const caloriesIntake = <h3>Calories intake: <span>{user.calories}</span></h3>
     return (
         <>
           <h1 className="title">My Profile</h1>
@@ -24,7 +24,7 @@ export const MyProfile = () => {
               <h1 className="username">{user.username}</h1>
               <img src={user.profilePic} alt="Profile picture" />
               <Link to={`/updateProfile/${publicUserId}`} className="btn update-profile-btn">Update profile</Link>
-              
+              {user.calories > 0 ? caloriesIntake : ""}
               <h3>Descripton:</h3>
               <p>
                {user.description}

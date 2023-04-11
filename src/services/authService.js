@@ -21,7 +21,6 @@ export const onPublicRegister = (username, profilePic, description) => {
 
 export const getPublicUser = async (userId) => {
     const publicUserData = await requester("GET", `${baseUrl}/data/publicUsers?where=_ownerId%3D%22${userId}%22`);
-    console.log(publicUserData);
     return publicUserData.length > 0 ? publicUserData[0] : {};
 }
 
@@ -31,8 +30,8 @@ export const updatePublicUser = (userId, username, profilePic, description) => {
     return publicUserData;
 }
 
-export const putCaloriesInUserProfile = (userId, username, profilePic, description, calories) => {
-    const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description, calories});
+export const putCaloriesInUserProfile = (userId, username, profilePic, description, gender, age, height, weight, activity, calories) => {
+    const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description, gender, age, height, weight, activity, calories});
     return publicUserData;
 }
 

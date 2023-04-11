@@ -5,8 +5,8 @@
     color: whitesmoke;
     min-height: 800px;
     padding: 20px;
-    padding-left: 95px;
-    padding-right: 95px;
+    padding-left: 7%;
+    padding-right: 7%;
     position: relative;
     width: 37%;
     height: auto;
@@ -30,10 +30,9 @@ img.profileImg {
 }
 
 .dietDayHome {
-    width: 190px;
-    margin: 20px;
-    padding: 40px;
-    background-position: right 35% bottom 45%;
+    width: 38%;
+    margin: 5%;
+    padding: 40px;  
     box-sizing: border-box;
     border-radius: 15px;
     position: relative;
@@ -42,6 +41,7 @@ img.profileImg {
     background-color: whitesmoke;
     color: black;
     text-decoration: solid;
+    
 }
 
 .no-articles{
