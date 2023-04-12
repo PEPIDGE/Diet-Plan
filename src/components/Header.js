@@ -15,7 +15,7 @@ export const Header = () => {
                 <Link to="/logout">Logout</Link>
             </li>
             <li>
-                <Link to="/myProfile">My profile</Link>
+                <Link to={`/myProfile/${publicUserId}`}>My profile</Link>
             </li>
             <li>
                 <Link to="/myPosts">My posts</Link>

@@ -24,6 +24,11 @@ export const getPublicUser = async (userId) => {
     return publicUserData.length > 0 ? publicUserData[0] : {};
 }
 
+export const getPublicUserWithPublicUserId = (userId) => {
+    const publicUserData = requester("GET", `${baseUrl}/data/publicUsers/${userId}`);
+    return publicUserData;
+}
+
 
 export const updatePublicUser = (userId, username, profilePic, description) => {
     const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description});

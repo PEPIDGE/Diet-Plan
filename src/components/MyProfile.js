@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getPublicUser } from "../services/authService";
+import { Link, useParams } from "react-router-dom";
+import { getPublicUserWithPublicUserId } from "../services/authService";
 
 export const MyProfile = () => {
 
-  const userId = JSON.parse(localStorage.getItem("authData"))._id;
-  const publicUserId = JSON.parse(localStorage.getItem("authData")).publicUserId;
+  const { publicUserId } = useParams();
+
+  const userAuth = localStorage.getItem('authData');
+  const auth = JSON.parse(userAuth || "{}");
+  const userId = auth ? auth._id : "{}";
+
   const [user, setUser] = useState({});
 
   useEffect(() => {
     (async () => {
-      const data = await getPublicUser(userId);
+      const data = await getPublicUserWithPublicUserId(publicUserId);
+      console.log(data);
       setUser(data)
     })();
 
@@ -23,12 +28,11 @@ export const MyProfile = () => {
             <div className="profile">
               <h1 className="username">{user.username}</h1>
               <img src={user.profilePic} alt="Profile picture" />
-              <Link to={`/updateProfile/${publicUserId}`} className="btn update-profile-btn">Update profile</Link>
+              {user._ownerId === userId ? <Link to={`/updateProfile/${publicUserId}`} className="btn update-profile-btn">Update profile</Link> : ""}
+              
               {user.calories > 0 ? caloriesIntake : ""}
               <h3>Descripton:</h3>
-              <p>
-               {user.description}
-              </p>
+              {user.description ? <p> {user.description} </p> : <p>No description yet</p>}
             </div>
           </div>
         </>

@@ -39,7 +39,7 @@ export const UpdateProfile = () => {
                 alert(updatedUser.message);
                 //todo: 401 page
             } else {
-                navigate(`/myProfile`);
+                navigate(`/myProfile/${publicUserId}`);
             }
         }
     }
@@ -130,8 +130,7 @@ export const UpdateProfile = () => {
                 ) : (
                     ""
                 )}
-
-                {/* TODO: MAKE A CHECKBOX WITH TERMS */}
+                
                 <input
                     className="btn submit-form-btn"
                     type="submit"
