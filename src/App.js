@@ -41,7 +41,7 @@ function App() {
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/myProfile/:publicUserId" element={<MyProfile />} />
                 <Route path="/updateProfile/:publicUserId" element={<UpdateProfile />} />
-                <Route path="/details/:gameId" element={<Detals />} />
+                <Route path="/details/:dietDayId" element={<Detals />} />
                  {/* <Route path="/edit/:gameId" element={<EditGame />} />  */}
             </Routes>
         </AuthContext.Provider>

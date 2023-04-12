@@ -3,7 +3,9 @@ h1.details-title {
 }
 
 .details {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     padding: 50px;
     border-radius: 20px;
@@ -12,6 +14,8 @@ h1.details-title {
     min-height: 500px;
     width: 90%;
     text-align: center;
+    flex-direction: column;
+
 }
 
 .details-container {
@@ -20,7 +24,6 @@ h1.details-title {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
     color: white;
 }
 
@@ -28,3 +31,39 @@ h2.intake {
     margin: 5%;
 }
 
+.successful {
+    color: rgb(40, 187, 40);
+}
+
+.unsuccessful {
+    color: rgb(199, 24, 24);
+}
+
+table {
+    margin-top: 2%;
+    margin-bottom: 4%;
+    background-color: black;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid white;
+    padding: 10px;
+    color: white;
+}
+thead {
+    border: 2px solid white;
+}
+
+th{   
+    font-weight:normal;
+    border: 2px solid white;
+}
+
+.detailsPage-btn {
+    position: relative;
+  display: inline-block;
+    margin-left: 10px;
+  margin-right: auto;
+  height: 20px;
+
+}
