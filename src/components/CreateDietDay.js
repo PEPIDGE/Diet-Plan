@@ -112,7 +112,7 @@ export const CreateDietDay = () => {
 
     return(
         <div className="form-container">
-            <h1>Your diet day</h1>
+            <h1 className="create-title">Your diet day</h1>
 
 
             <form onSubmit={submitHandler} className="create-form">
