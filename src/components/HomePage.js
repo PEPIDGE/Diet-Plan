@@ -21,7 +21,7 @@ export const HomePage = () => {
             {dietDays.length > 0
                     ? dietDays.map(x => <DietDay key={x._id} day={x} />)
                     : <h1 className="no-articles">No diet days yet</h1>
-                }
+            }
             </div>
         </div>
         </>

@@ -38,10 +38,12 @@ export const CreateDietDay = () => {
                 isValid = false;
             }
         }
+        data.totalCalories = Number(data["breakfast-calories"]) + Number(data["lunch-calories"]) + Number(data["afternoon-calories"]) + Number(data["dinner-calories"]);
         data["breakfast-calories"] = Number(data["breakfast-calories"]);
         data["lunch-calories"] = Number(data["lunch-calories"]);
         data["afternoon-calories"] = Number(data["afternoon-calories"]);
         data["dinner-calories"] = Number(data["dinner-calories"]);
+        
         if (data["breakfast-calories"] >3000) {
             errors["breakfast-calories"] = "The maximum calories are 3000";
             isValid = false;
