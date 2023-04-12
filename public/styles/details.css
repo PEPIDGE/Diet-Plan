@@ -1,0 +1,30 @@
+h1.details-title {
+    margin-top: 25px;
+}
+
+.details {
+
+    background-color: black;
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: auto;
+    min-height: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.details-container {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    color: white;
+}
+
+h2.intake {
+    margin: 5%;
+}
+

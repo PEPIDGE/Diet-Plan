@@ -12,6 +12,7 @@ import { AuthContext } from "./contexts/AuthContext";
 import { useLocalStorage } from "./hooks/useLocalStorageHook";
 import { MyPosts } from "./components/MyPosts";
 import { CalorieCalculator } from "./components/CalorieCalculator";
+import { Detals } from "./components/Details";
 
 
 function App() {
@@ -32,17 +33,16 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/myProfile" element={<MyProfile />} />
                 <Route path="/myPosts" element={<MyPosts />} />
                 <Route path="/calorieCalculator" element={<CalorieCalculator />} />
                 <Route path="/create" element={<CreateDietDay />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
+                <Route path="/myProfile/:publicUserId" element={<MyProfile />} />
                 <Route path="/updateProfile/:publicUserId" element={<UpdateProfile />} />
-                 {/* 
-                 <Route path="/details/:gameId" element={<Details />} />
-                 <Route path="/edit/:gameId" element={<EditGame />} />  */}
+                <Route path="/details/:gameId" element={<Detals />} />
+                 {/* <Route path="/edit/:gameId" element={<EditGame />} />  */}
             </Routes>
         </AuthContext.Provider>
     );
