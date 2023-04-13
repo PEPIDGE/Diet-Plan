@@ -13,6 +13,7 @@ import { useLocalStorage } from "./hooks/useLocalStorageHook";
 import { MyPosts } from "./components/MyPosts";
 import { CalorieCalculator } from "./components/CalorieCalculator";
 import { Detals } from "./components/Details";
+import { EditDietDay } from "./components/EditDietDay";
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
                 <Route path="/myProfile/:publicUserId" element={<MyProfile />} />
                 <Route path="/updateProfile/:publicUserId" element={<UpdateProfile />} />
                 <Route path="/details/:dietDayId" element={<Detals />} />
-                 {/* <Route path="/edit/:gameId" element={<EditGame />} />  */}
+                <Route path="/edit/:dietDayId" element={<EditDietDay />} /> 
             </Routes>
         </AuthContext.Provider>
     );

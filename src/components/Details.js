@@ -7,7 +7,7 @@ import { AuthContext } from "../contexts/AuthContext";
 export const Detals = () => {
     
     const { dietDayId } = useParams();
-    const [dietDay, setdietDay] = useState({});
+    const [dietDay, setDietDay] = useState({});
     const [user, setUser] = useState({});
     const {auth} = useContext(AuthContext);
 
@@ -15,7 +15,7 @@ export const Detals = () => {
       (async () => {
         const dietDayData = await getOne(dietDayId);
         console.log(dietDayData);
-        setdietDay(dietDayData);
+        setDietDay(dietDayData);
 
         const userData = await getPublicUser(dietDayData._ownerId);
         console.log(userData);
