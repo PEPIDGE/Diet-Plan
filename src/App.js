@@ -14,8 +14,6 @@ import { MyPosts } from "./components/MyPosts";
 import { CalorieCalculator } from "./components/CalorieCalculator";
 import { Detals } from "./components/Details";
 import { EditDietDay } from "./components/EditDietDay";
-import { DeleteDietDay } from "./components/DeleteDietDay";
-
 
 function App() {
     const [auth, setAuth] = useLocalStorage('authData', {});
@@ -45,7 +43,6 @@ function App() {
                 <Route path="/updateProfile/:publicUserId" element={<UpdateProfile />} />
                 <Route path="/details/:dietDayId" element={<Detals />} />
                 <Route path="/edit/:dietDayId" element={<EditDietDay />} /> 
-                <Route path="/delete/:dietDayId" element={<DeleteDietDay />} /> 
             </Routes>
         </AuthContext.Provider>
     );
