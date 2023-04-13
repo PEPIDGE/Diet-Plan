@@ -15,11 +15,9 @@ export const Detals = () => {
     useEffect(() => {
       (async () => {
         const dietDayData = await getOne(dietDayId);
-        console.log(dietDayData);
         setDietDay(dietDayData);
 
         const userData = await getPublicUser(dietDayData._ownerId);
-        console.log(userData);
         setUser(userData);
         
       })();
@@ -32,7 +30,7 @@ export const Detals = () => {
       (async () => {
           const deletedDayData= await deleteDietDay(dietDayId);
           if (deletedDayData.code === 401) {  
-              //todo: 401 page
+              navigate("/error401");
           } else if(deletedDayData.message) {
               alert(deletedDayData.message);
           } else {

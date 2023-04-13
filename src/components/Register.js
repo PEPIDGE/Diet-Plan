@@ -144,7 +144,7 @@ export const Register = () => {
     }
     return (
         <div className="form-container">
-            <h1>REGISTER</h1>
+            <h1>Register</h1>
             <form className="register-form" onSubmit={submitHandler}>
                 <label htmlFor="name">
                     Username <span className="required">*</span>

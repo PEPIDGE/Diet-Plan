@@ -34,10 +34,9 @@ export const UpdateProfile = () => {
                 data.description
             );
             if (updatedUser.code === 401) {
-                console.log(updatedUser);
+                navigate("/error401");
             } else if (updatedUser.message) {
-                alert(updatedUser.message);
-                //todo: 401 page
+                alert(updatedUser.message); //todo popup
             } else {
                 navigate(`/myProfile/${publicUserId}`);
             }
@@ -77,7 +76,7 @@ export const UpdateProfile = () => {
 
     return (
         <div className="form-container">
-            <h1>UPDATE PROFILE</h1>
+            <h1 className="updateProfile-title">Update profile</h1>
             <form className="update-form" onSubmit={submitHandler}>
                 <label htmlFor="name">
                     Username <span className="required">*</span>

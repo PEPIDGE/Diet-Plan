@@ -15,7 +15,7 @@ export const Logout = () => {
                 navigate("/");
             })
             .catch(() => {
-                //todo 401 page
+                navigate("/error401");  
             });
     }, []);
 

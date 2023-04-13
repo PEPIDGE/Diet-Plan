@@ -14,6 +14,8 @@ import { MyPosts } from "./components/MyPosts";
 import { CalorieCalculator } from "./components/CalorieCalculator";
 import { Detals } from "./components/Details";
 import { EditDietDay } from "./components/EditDietDay";
+import { Page401 } from "./components/page401";
+import { Page404 } from "./components/page404";
 
 function App() {
     const [auth, setAuth] = useLocalStorage('authData', {});
@@ -39,10 +41,13 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
+                <Route path="/error401" element={<Page401/>} />
                 <Route path="/myProfile/:publicUserId" element={<MyProfile />} />
                 <Route path="/updateProfile/:publicUserId" element={<UpdateProfile />} />
                 <Route path="/details/:dietDayId" element={<Detals />} />
                 <Route path="/edit/:dietDayId" element={<EditDietDay />} /> 
+                <Route path="*" element={<Page404/>} />
+
             </Routes>
         </AuthContext.Provider>
     );

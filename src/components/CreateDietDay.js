@@ -103,9 +103,9 @@ export const CreateDietDay = () => {
             }
             const dietDay = await createDietDay(data);
             if (dietDay.code === 401) {
-                //todo: 401 page
+                navigate("/error401");      
             } else if(dietDay.message) {
-                alert(dietDay.message)
+                alert(dietDay.message);
             } else {
                 navigate("/");
             }

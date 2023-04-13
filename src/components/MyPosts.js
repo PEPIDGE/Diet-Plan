@@ -15,9 +15,8 @@ export const MyPosts = () => {
         (async () => {
           const data = await getLastDietDays(auth._id);
           const userData = await getPublicUser(auth._id);
-          console.log(userData);
           setUser(userData);
-          setDietDays(data)
+          setDietDays(data);
         })();
     
       }, []);

@@ -113,7 +113,7 @@ export const EditDietDay = () => {
             data.day = dietDay.day;
             const dietDayData = await editDietDay(dietDayId, data);
             if (dietDayData.code === 401) {
-                //todo: 401 page
+                navigate("/error401");
             } else if(dietDayData.message) {
                 alert(dietDayData.message)
             } else {

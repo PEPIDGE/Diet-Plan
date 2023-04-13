@@ -103,10 +103,9 @@ export const CalorieCalculator = () => {
       }
       const user = await getPublicUser(auth._id);
       if(user === {}){
-        return;
+        navigate("/error401");
       } 
       const updatedUser = await putCaloriesInUserProfile(auth.publicUserId, user.username, user.profilePic, user.description, data.gender, Number(data.age), Number(data.weight), Number(data.height), data.activity,  Number(totalCalories.toFixed(2)));
-      console.log(updatedUser); 
       navigate(`/myProfile/${auth.publicUserId}`);
   
     }

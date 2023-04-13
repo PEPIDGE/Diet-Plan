@@ -57,3 +57,9 @@ h1.title {
 .link{
     color: white;
 }
+.updateProfile-title {
+    margin-top: 3%;
+}
+.error404-message{
+    color: black;
+}
