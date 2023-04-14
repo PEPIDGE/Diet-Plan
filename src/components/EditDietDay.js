@@ -112,8 +112,8 @@ export const EditDietDay = () => {
         if (isValid ) {
             data.day = dietDay.day;
             const dietDayData = await editDietDay(dietDayId, data);
-            if (dietDayData.code === 401) {
-                navigate("/error401");
+            if (dietDayData.code === 401 || dietDayData.code === 403) {
+                return navigate("/error401");
             } else if(dietDayData.message) {
                 alert(dietDayData.message)
             } else {

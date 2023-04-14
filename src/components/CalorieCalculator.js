@@ -102,8 +102,8 @@ export const CalorieCalculator = () => {
             4.676 * parseFloat(data.age));
       }
       const user = await getPublicUser(auth._id);
-      if(user === {}){
-        navigate("/error401");
+      if(Object.keys(user).length === 0){
+        return navigate("/error401");
       } 
       const updatedUser = await putCaloriesInUserProfile(auth.publicUserId, user.username, user.profilePic, user.description, data.gender, Number(data.age), Number(data.weight), Number(data.height), data.activity,  Number(totalCalories.toFixed(2)));
       navigate(`/myProfile/${auth.publicUserId}`);

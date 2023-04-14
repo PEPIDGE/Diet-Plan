@@ -15,7 +15,6 @@ export const MyProfile = () => {
   useEffect(() => {
     (async () => {
       const data = await getPublicUserWithPublicUserId(publicUserId);
-      console.log(data);
       setUser(data)
     })();
 

@@ -94,7 +94,7 @@ export const CreateDietDay = () => {
         }
         setDataErrors(errors);
 
-        if (isValid ) {
+        //if (isValid ) {
             const lastDay = await getLastDietDay(auth._id);
             if (lastDay.length === 0) {
                 data.day = 1;
@@ -102,14 +102,14 @@ export const CreateDietDay = () => {
                 data.day = Number(lastDay.day) +1;
             }
             const dietDay = await createDietDay(data);
-            if (dietDay.code === 401) {
-                navigate("/error401");      
+            if (dietDay.code === 401 || dietDay.code === 403) {
+                return navigate("/error401");      
             } else if(dietDay.message) {
                 alert(dietDay.message);
             } else {
                 navigate("/");
             }
-        }
+        //}
     }
 
     return(

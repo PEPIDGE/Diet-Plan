@@ -29,8 +29,8 @@ export const Detals = () => {
     const handleConfirm = () => {
       (async () => {
           const deletedDayData= await deleteDietDay(dietDayId);
-          if (deletedDayData.code === 401) {  
-              navigate("/error401");
+          if (deletedDayData.code === 401 || deletedDayData.code === 403) {  
+              return navigate("/error401");
           } else if(deletedDayData.message) {
               alert(deletedDayData.message);
           } else {

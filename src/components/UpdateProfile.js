@@ -33,10 +33,10 @@ export const UpdateProfile = () => {
                 data.profilePic.trim(),
                 data.description
             );
-            if (updatedUser.code === 401) {
+            if (updatedUser.code === 401 || updatedUser.code === 403) {
                 navigate("/error401");
             } else if (updatedUser.message) {
-                alert(updatedUser.message); //todo popup
+                alert(updatedUser.message); 
             } else {
                 navigate(`/myProfile/${publicUserId}`);
             }
