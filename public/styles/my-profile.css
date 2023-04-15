@@ -10,18 +10,18 @@
 .profile {
     background-color: black;
     padding: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     max-width: 600px;
     width: auto;
     min-height: 500px;
     width: 90%;
     text-align: center;
 }
-h1.title {
+.myProfile-title{
     text-align: center;
     font-size: 28px;
-    margin-top: 5%;
-  }
+    margin-top: 40px;
+}
 .profile h1 {
     font-size: 3rem;
     margin-bottom: 20px;
