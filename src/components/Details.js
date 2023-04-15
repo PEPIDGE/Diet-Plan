@@ -3,15 +3,21 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { getPublicUser } from "../services/authService";
 import { deleteDietDay, getOne } from "../services/dietDayService";
 import { AuthContext } from "../contexts/AuthContext";
+import { getLikesCount, getUserLikeAvailability, postLike } from "../services/likeService";
 
 
 export const Detals = () => {
-    
+  
+    const navigate = useNavigate();
     const { dietDayId } = useParams();
-    const [dietDay, setDietDay] = useState({});
-    const [user, setUser] = useState({});
     const {auth} = useContext(AuthContext);
-
+    
+    const [user, setUser] = useState({});
+    const [dietDay, setDietDay] = useState({});
+    const [show, setShow] = useState(false);
+    const [likes, setLikes] = useState(0);
+    const [likeAvailability, setLikeAvailability] = useState("");
+    
     useEffect(() => {
       (async () => {
         const dietDayData = await getOne(dietDayId);
@@ -19,14 +25,27 @@ export const Detals = () => {
 
         const userData = await getPublicUser(dietDayData._ownerId);
         setUser(userData);
-        
       })();
     }, []);
+    
+    useEffect(() => {
+      (async () => {
+        const likesCountData = await getLikesCount(dietDayId);
+        setLikes(likesCountData);
 
-    const navigate = useNavigate();
-    const [show, setShow] = useState(false);
+        if (user._ownerId === auth._id) {
+          setLikeAvailability(false);
+        } else if (Object.keys(auth).length > 0) {
+          const likeAvailabilityData = await getUserLikeAvailability(auth._id, dietDayId);
+          setLikeAvailability(likeAvailabilityData);
+        } else {
+          setLikeAvailability(false);
+        }
+        
+      })();
+    }, [likes]);
 
-    const handleConfirm = () => {
+    const confirmationHandler = () => {
       (async () => {
           const deletedDayData= await deleteDietDay(dietDayId);
           if (deletedDayData.code === 401 || deletedDayData.code === 403) {  
@@ -39,17 +58,23 @@ export const Detals = () => {
       })()
     };
     
+    const likeHandler = () => {
+      (async () => {
+        setLikes(oldLikes => oldLikes+1);
+        await postLike(auth._id, dietDayId);
+    })()
+    };
     
 
     const ownerButtons = <>
     
-      <Link className="btn detailsPage-btn" to={`/edit/${dietDay._id}`}>Edit</Link> <button onClick={() => setShow(true)} className="btn delete-btn" to={`/delete/${dietDay._id}`}>Delete</button>
+      <Link className="btn detailsPage-btn" to={`/edit/${dietDay._id}`}>Edit</Link> <button onClick={() => setShow(true)} className="btn delete-btn" >Delete</button>
       {show && (
             <div className="overlay">
               <div className="modal">
                 <p className="confirm-message">Are you sure that you want to delete this diet day?</p>
                 <div className="button-group">
-                  <button className="btn button-popup" onClick={handleConfirm}>Confirm</button>
+                  <button className="btn button-popup" onClick={confirmationHandler}>Confirm</button>
                   <button className="btn button-popup" onClick={() => setShow(false)}>Cancel</button>
                 </div>
               </div>
@@ -57,6 +82,7 @@ export const Detals = () => {
           )}
     </>;
     const guestButtons =  <Link className="btn detailsPage-btn" to={`/myProfile/${user._id}`}>View profile</Link>;
+
     
     return(
         <>
@@ -104,7 +130,9 @@ export const Detals = () => {
             
             <div className="buttons">
 
-            {user._ownerId === auth._id ? ownerButtons : guestButtons}
+            <button onClick={likeHandler} className={likeAvailability ? "btn enabled-like" : "btn disabled-like"} disabled={!likeAvailability}>Like: {likes}</button>
+
+            {user?._ownerId === auth?._id ? ownerButtons : guestButtons}
             </div>
             </div>
           </div>
