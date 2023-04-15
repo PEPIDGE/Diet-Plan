@@ -58,7 +58,7 @@ export const Login = () => {
 
     return(
         <div className="form-container">
-            <h1>LOGIN</h1>
+            <h1 className="login-register-title">Login</h1>
             <form onSubmit={submitHandler} className="login-form">
             
             <label htmlFor="email">Email <span className="required">*</span></label>

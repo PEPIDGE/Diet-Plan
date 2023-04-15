@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAll } from "../services/dietDayService";
-import { DietDay } from "./DietDay";
+import { DietDay } from "./common/DietDay";
 
 export const HomePage = () => {
     const [dietDays, setDietDays] = useState({});
@@ -19,8 +19,8 @@ export const HomePage = () => {
           	<div className="content">
               
             {dietDays.length > 0
-                    ? dietDays.map(x => <DietDay key={x._id} day={x} />)
-                    : <h1 className="no-articles">No diet days yet</h1>
+                  ? dietDays.map(x => <DietDay key={x._id} day={x} />)
+                  : <h1 className="no-articles">No diet days yet</h1>
             }
             </div>
         </div>

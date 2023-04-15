@@ -22,7 +22,7 @@ export const MyProfile = () => {
   const caloriesIntake = <h3>Calories intake: <span>{user.calories}</span></h3>
     return (
         <>
-          <h1 className="title">My Profile</h1>
+          <h1 className="myProfile-title">My Profile</h1>
           <div className="container">
             <div className="profile">
               <h1 className="username">{user.username}</h1>

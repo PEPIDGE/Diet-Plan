@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { getLastDietDays } from "../services/dietDayService";
-import { MyPostsDietDay } from "./MyPostsDietDay";
+import { MyPostsDietDay } from "./common/MyPostsDietDay";
 import { Link } from "react-router-dom";
 import { getPublicUser } from "../services/authService";
 import { AuthContext } from "../contexts/AuthContext";
