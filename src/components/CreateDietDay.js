@@ -94,7 +94,7 @@ export const CreateDietDay = () => {
         }
         setDataErrors(errors);
 
-        //if (isValid ) {
+        if (isValid ) {
             const lastDay = await getLastDietDay(auth._id);
             if (lastDay.length === 0) {
                 data.day = 1;
@@ -109,7 +109,7 @@ export const CreateDietDay = () => {
             } else {
                 navigate("/");
             }
-        //}
+        }
     }
 
     return(
