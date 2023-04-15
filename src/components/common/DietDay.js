@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getPublicUser } from "../services/authService";
+import { getPublicUser } from "../../services/authService";
 export const DietDay = (props) => {
 
   const [user, setUser] = useState({});
