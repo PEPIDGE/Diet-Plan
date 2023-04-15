@@ -16,7 +16,13 @@ export const Detals = () => {
     const [dietDay, setDietDay] = useState({});
     const [show, setShow] = useState(false);
     const [likes, setLikes] = useState(0);
-    const [likeAvailability, setLikeAvailability] = useState("");
+    const [likeAvailability, setLikeAvailability] = useState(false);
+    
+    useEffect(() => {
+      (async () => {
+        
+      })();
+    }, []);
     
     useEffect(() => {
       (async () => {
@@ -25,25 +31,23 @@ export const Detals = () => {
 
         const userData = await getPublicUser(dietDayData._ownerId);
         setUser(userData);
-      })();
-    }, []);
-    
-    useEffect(() => {
-      (async () => {
+
+        const isOwner = auth._id === userData._ownerId;
+
         const likesCountData = await getLikesCount(dietDayId);
         setLikes(likesCountData);
 
-        if (user._ownerId === auth._id) {
+        if (isOwner) {
           setLikeAvailability(false);
         } else if (Object.keys(auth).length > 0) {
-          const likeAvailabilityData = await getUserLikeAvailability(auth._id, dietDayId);
+          const likeAvailabilityData = await getUserLikeAvailability(auth._id, dietDayId, isOwner);
           setLikeAvailability(likeAvailabilityData);
         } else {
           setLikeAvailability(false);
         }
         
       })();
-    }, [likes]);
+    }, []);
 
     const confirmationHandler = () => {
       (async () => {
@@ -60,8 +64,10 @@ export const Detals = () => {
     
     const likeHandler = () => {
       (async () => {
+        const isOwner = auth._id === user._ownerId;
         setLikes(oldLikes => oldLikes+1);
-        await postLike(auth._id, dietDayId);
+        setLikeAvailability(false);
+        await postLike(auth._id, dietDayId, isOwner);
     })()
     };
     

@@ -91,10 +91,10 @@ export const Register = () => {
 
         if (
             data.username.trim().length < 2 ||
-            data.username.trim().length > 12
+            data.username.trim().length > 16
         ) {
             isValid = false;
-            errors.username = "The length of the username must be between 2 and 12 symbols";
+            errors.username = "The length of the username must be between 2 and 16 symbols";
         }
         if (data.profilePic.length > 0 &&
             data.profilePic.trim().slice(0, 4) !== "http"

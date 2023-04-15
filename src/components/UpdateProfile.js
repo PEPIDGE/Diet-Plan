@@ -16,12 +16,27 @@ export const UpdateProfile = () => {
         })();
     }, []);
 
+
     const [dataErrors, setDataErrors] = useState({
         username: "",
         profilePic: "",
         description: "",
     });
 
+    // let symbolsRemaining = 0;
+    // useEffect(() => {
+    //     let errors = { ...dataErrors };
+    //     if (data.description.length >= 300 && data.description.length < 350) {
+    //         symbolsRemaining = 350 - data.description.length;
+    //         errors.description = `You have ${symbolsRemaining} symbols remaining`;
+    //     } else if (data.description.length < 300) {
+    //         errors.description = "";
+    //     } else if (data.description.length === 350) {
+    //         errors.description = `You've reached your maximum symbols`;
+    //     }
+    //     setDataErrors(errors);
+    // }, [data.description]);
+    
     async function submitHandler(e) {
         e.preventDefault();
         let data = Object.fromEntries(new FormData(e.currentTarget));
@@ -52,10 +67,10 @@ export const UpdateProfile = () => {
         let isValid = true;
         if (
             data.username.trim().length < 2 ||
-            data.username.trim().length > 8
+            data.username.trim().length > 16
         ) {
             isValid = false;
-            errors.username = "The length of the username must be between 2 and 8 symbols";
+            errors.username = "The length of the username must be between 2 and 16 symbols";
         }
         if (data.profilePic.length > 0 &&
             data.profilePic.trim().slice(0, 4) !== "http"
@@ -66,9 +81,9 @@ export const UpdateProfile = () => {
         if (data.description.trim().length < 15) {
             isValid = false;
             errors.description = "The length of the description must be at least 15 symbols";
-        } else if (data.description.trim().length > 300) {
+        } else if (data.description.trim().length > 350) {
             isValid = false;
-            errors.description = "The length of the description must be maximum 300 symbols";
+            errors.description = "The length of the description must be maximum 350 symbols";
         }
         setDataErrors(errors);
         return isValid;
@@ -122,6 +137,8 @@ export const UpdateProfile = () => {
                     name="description"
                     defaultValue={user?.description}
                     placeholder="Enter description about you"
+                    maxLength={350}
+
                 />
 
                 {dataErrors.description.length > 0 ? (
