@@ -60,19 +60,19 @@ export const CreateDietDay = () => {
             errors["dinner-calories"] = "The maximum calories are 3000";
             isValid = false;
         } 
-        if (["breakfast-calories"] <0) {
+        if (data["breakfast-calories"] <0) {
             errors["breakfast-calories"] = "The calories can't be negative";
             isValid = false;
         }
-        if (["lunch-calories"] <0) {
+        if (data["lunch-calories"] <0) {
             errors["lunch-calories"] = "The calories can't be negative";
             isValid = false;
         }
-        if (["afternoon-calories"] <0) {
+        if (data["afternoon-calories"] <0) {
             errors["afternoon-calories"] = "The calories can't be negative";
             isValid = false;
         }
-        if (["dinner-calories"] <0) {
+        if (data["dinner-calories"] <0) {
             errors["dinner-calories"] = "The calories can't be negative";
             isValid = false;
         }
