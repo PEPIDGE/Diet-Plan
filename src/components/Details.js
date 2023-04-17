@@ -18,11 +18,6 @@ export const Detals = () => {
     const [likes, setLikes] = useState(0);
     const [likeAvailability, setLikeAvailability] = useState(false);
     
-    useEffect(() => {
-      (async () => {
-        
-      })();
-    }, []);
     
     useEffect(() => {
       (async () => {
@@ -30,6 +25,7 @@ export const Detals = () => {
         setDietDay(dietDayData);
 
         const userData = await getPublicUser(dietDayData._ownerId);
+        console.log(userData);
         setUser(userData);
 
         const isOwner = auth._id === userData._ownerId;

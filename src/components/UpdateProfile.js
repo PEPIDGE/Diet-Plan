@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
-import { getPublicUser, updatePublicUser } from "../services/authService";
+import { getPublicUser, getPublicUserWithPublicUserId, updatePublicUser } from "../services/authService";
 
 export const UpdateProfile = () => {
     const { publicUserId } = useParams();
@@ -42,12 +42,11 @@ export const UpdateProfile = () => {
         let data = Object.fromEntries(new FormData(e.currentTarget));
         const isValid = formValidation(data);
         if (isValid) {
-            const updatedUser = await updatePublicUser(
-                publicUserId,
-                data.username.trim(),
-                data.profilePic.trim(),
-                data.description
-            );
+            const oldUserData = await getPublicUserWithPublicUserId(publicUserId);
+            console.log(oldUserData);
+            const updatedUser = await updatePublicUser(publicUserId, data.username.trim(), data.profilePic.trim(), data.description,  Number(oldUserData.calories), oldUserData.gender, Number(oldUserData.age), Number(oldUserData.weight), Number(oldUserData.height), oldUserData.activity);
+
+            console.log(updatedUser);
             if (updatedUser.code === 401 || updatedUser.code === 403) {
                 navigate("/error401");
             } else if (updatedUser.message) {

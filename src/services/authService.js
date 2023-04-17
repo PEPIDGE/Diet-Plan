@@ -30,8 +30,13 @@ export const getPublicUserWithPublicUserId = (userId) => {
 }
 
 
-export const updatePublicUser = (userId, username, profilePic, description) => {
-    const publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description});
+export const updatePublicUser = (userId, username, profilePic, description, calories, gender, age, height, weight, activity ) => {
+    let publicUserData = "";
+    if(calories === 0) {
+        publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description, calories});
+    } else {
+        publicUserData = requester("PUT", `${baseUrl}/data/publicUsers/${userId}`, {username, profilePic, description, calories, gender, age, height, weight, activity});
+    }
     return publicUserData;
 }
 

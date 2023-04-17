@@ -50,7 +50,6 @@ export const Register = () => {
         let user = {};
         if (isValid) {
             user = await onRegister(data.email.trim(), data.password);
-            console.log(user);
             if (user.message) {
                 alert(user.message);
             } else {
@@ -75,7 +74,6 @@ export const Register = () => {
             }
         }
 
-        console.log(user);
     }
 
     function formValidation() {
