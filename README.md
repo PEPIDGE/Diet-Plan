@@ -17,7 +17,7 @@ To install the Diet Plan App, follow these steps:
 1. Download the React app which is in the this github link.
 2. Download the softuni practice server.
 3. Launch the app and create an account.
-4. Open a terminal in the diet-plan folder and run the command: "npm i && npm start" (you have to have installed node.js localy on your device)
+4. Open a terminal in the diet-plan folder and run the command: "npm i; npm start" (you have to have installed node.js locally on your device)
 5. Open a terminal in the server folder directory and run the command: "node server.js".
 6. Register or login if you already have an accaunt.
 7. Calculate your daily calories intake in the calorie calculator.
