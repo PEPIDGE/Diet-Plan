@@ -1,8 +1,8 @@
-# Diet Day App Documentation
+# Diet Plan App Documentation
 
 ## Introduction
 
-The Diet Day App is a web application that helps users track their daily food intake and monitor their progress towards their weight loss goals. With the Diet Day App, users can easily log their meals and snacks, and share their diet day to the public.
+The Diet Plan App is a web application that helps users track their daily food intake and monitor their progress towards their weight loss goals. With the Diet Plan App, users can easily log their meals and snacks, and share their diet day to the public.
 
 ## Features
 
@@ -12,12 +12,12 @@ The Diet Day App is a web application that helps users track their daily food in
 
 ## Installation
 
-To install the Diet Day App, follow these steps:
+To install the Diet Plan App, follow these steps:
 
 1. Download the React app which is in the this github link.
 2. Download the softuni practice server.
 3. Launch the app and create an account.
-4. Open a terminal in the diet-day folder and run the command: "npm i && npm start" (you have to have installed node.js localy on your device)
+4. Open a terminal in the diet-plan folder and run the command: "npm i && npm start" (you have to have installed node.js localy on your device)
 5. Open a terminal in the server folder directory and run the command: "node server.js".
 6. Register or login if you already have an accaunt.
 7. Calculate your daily calories intake in the calorie calculator.
@@ -38,11 +38,11 @@ The Diet Day App is built using React and follows a standard file structure for 
 
 ## Dependencies
 
-The Diet Day App relies on 2 external libraries and dependencies to function properly. These include:
+The Diet Plan App relies on 2 external libraries and dependencies to function properly. These include:
 
 - React 
 - React Router v6
 
 ## Contact
 
-If you have any questions or feedback about the Diet Day App, please feel free to contact us at pepsitodege@gmmail.com.
+If you have any questions or feedback about the Diet Plan App, please feel free to contact us at pepsitodege@gmmail.com.
