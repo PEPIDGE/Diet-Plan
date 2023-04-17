@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router";
-import "./App.css";
 import { CreateDietDay } from "./components/CreateDietDay";
 import { Header } from "./components/Header";
 import { HomePage } from "./components/HomePage";
