@@ -32,6 +32,8 @@ The Diet Day App is built using React and follows a standard file structure for 
 - services/: A directory containing 3 services for http requests to an external server (softuni practice server) and a requester which is a function that helps the services for easier requests and clener code.
 - contexts/: A directory containing auth context which helps the authentication in the app.
 - hooks/: A directory containing a hook that prevents the app from reloading.
+- styles/: A directory containing all styles for the app.
+- images/ A directory containing the app logo.
 
 
 ## Dependencies
