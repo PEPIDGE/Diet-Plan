@@ -1,58 +1,63 @@
 .home {
-    overflow: hidden;
-    background-color: black;
-    border-radius: 10px;
-    color: whitesmoke;
-    min-height: 800px;
-    padding: 20px;
-    padding-left: 7%;
-    padding-right: 7%;
-    position: relative;
-    width: 37%;
-    height: auto;
-    justify-content: center;
-    margin: 0 auto;
-    font-size: auto;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  align-items: center;
+  overflow: hidden;
+  background-color: black;
+  border-radius: 10px;
+  color: whitesmoke;
+  min-height: 800px;
+  padding: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  position: relative;
+  width: 35%;
+  height: auto;
+  margin: 0 auto;
+  font-size: auto;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .btn.details-btn {
-    margin-left: 20%;
-    width: 50px;
-    height: 20px;
+  width: 50px;
+  height: 20px;
 }
 img.profileImg {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    float: right;
-    object-fit: cover;
-    object-position: center;
-    margin-bottom: 0%;
-    vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  float: right;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 0%;
+  vertical-align: middle;
 }
 
 .dietDayHome {
-    width: 38%;
-    margin: 5%;
-    display: flex;
-    flex-direction: column;
-    padding: 40px;  
-    box-sizing: border-box;
-    border-radius: 15px;
-    position: relative;
-    float: left;
-    height: auto;
-    background-color: whitesmoke;
-    color: black;
-    text-decoration: solid;
-    
+  width: 35%;
+  margin: 5% 7% 5% 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  position: relative;
+  float: left;
+  height: auto;
+  background-color: whitesmoke;
+  color: black;
+  text-decoration: solid;
 }
 
-.no-articles{
-    margin-top: 20%;
+.dietDayHome:nth-child(2n + 1) {
+  margin-right: 5%;
+  margin-left: 10%;
+}
+
+.no-articles {
+  margin-top: 20%;
 }
 
 .home-title {
-    margin-top: 2%;
+  margin-top: 2%;
 }
