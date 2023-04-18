@@ -45,4 +45,4 @@ The Diet Plan App relies on 2 external libraries and dependencies to function pr
 
 ## Contact
 
-If you have any questions or feedback about the Diet Plan App, please feel free to contact us at pepsitodege@gmmail.com.
+If you have any questions or feedback about the Diet Plan App, please feel free to contact us at pepsitodege@gmail.com.
